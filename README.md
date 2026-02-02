@@ -3,5 +3,5 @@
 ## Owner
 
 * 6702041511012
-* Nutthawut  ARBSA
+* Nutthawut  Arbsa
 * s6702041511012@email.kmutnb.ac.th
