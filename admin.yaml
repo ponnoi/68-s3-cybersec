@@ -10,7 +10,7 @@ services:
       - .env
 
     ports:
-      - "${PGADMIN_PORT}:5050"
+      - ${PGADMIN_PORT}:5050
 
     volumes:
       - pgadmin_data:/var/lib/pgadmin
