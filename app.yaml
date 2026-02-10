@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  s3app:
+    container_name: 68-s3-app
+    image: prawee/strapi
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT}:1337"
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: ${NODE_ENV}
+
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: ${DB_HOST}
+      DATABASE_PORT: 5432
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASS}
+
+    depends_on:
+      - s3db
+
+  s3db:
+    container_name: 68-s3-database
+    image: postgres:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASS}
+    ports:
+      - "${DATABASE_POST}:5432"
